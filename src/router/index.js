@@ -1,27 +1,57 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import LoginPage from '@/views/LoginPage'
+import GamePage from '@/views/GamePage'
+
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
+    {
+      path : "/",
+      component : LoginPage,
+      meta: 
+        {
+          title: "Login Page"
+        },
+    },
+    {
+        path : "/Game-page",
+        component : GamePage,
+        meta:
+        {
+          title: "Let's Play",
+        },
+    },
+];
+  
 
 const router = new VueRouter({
   routes
+})
+
+router.beforeEach((to,from,next) => {
+  // Get meta-tags
+  let metaTags = document.querySelectorAll('meta');
+  // Loop through tags and remove each
+  for (let tag of metaTags){
+    tag.remove();
+  }
+  let newTags = to.meta;
+  document.querySelector(`title`).innerText = newTags[0].title;
+
+  for (let i = 1; i < newTags.length; i++) {
+    document.querySelector(`head`).insertAdjacentHTML(`afterbegin`, `
+                            <meta name="${newTags[i].name}" content="${newTags[i].description}"`)
+  }
+// to;
+document.querySelector(`head`).insertAdjacentHTML(`afterbegin`, `
+                      <meta charset="utf-8">
+                      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                      <meta name="viewport" content="width=device-width,initial-scale=1.0">
+                      `);
+// from;
+next();
 })
 
 export default router

@@ -1,17 +1,19 @@
 <template>
   <div id="app">
+    <ScoreboardPage />
     <router-view />
   </div>
 </template>
 
 <script>
-// import Name from '@/components/Name.vue';
+import ScoreboardPage from '@/components/ScoreboardPage.vue';
 
-// export default {
-//   components: {
-//     Name
-//   },
-// };
+export default {
+  name: "App",
+  components: {
+    ScoreboardPage
+  },
+}
 </script>
 
 <style>

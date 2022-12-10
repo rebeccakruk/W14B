@@ -7,23 +7,25 @@ import GamePage from '@/views/GamePage'
 Vue.use(VueRouter)
 
 const routes = [
-    {
-      path : "/",
-      component : LoginPage,
-      meta: 
         {
-          title: "Login Page"
-        },
-    },
-    {
-        path : "/Game-page",
-        component : GamePage,
-        meta:
-        {
-          title: "Let's Play",
-        },
-    },
-];
+          path : "/",
+          component : LoginPage,
+          meta: [
+            {
+            title: "Login Page"
+            },
+      ]
+          },
+          {
+          path : "/Game-page",
+          component : GamePage,
+          meta:[
+            {
+            title: "Game Page",
+            },
+      ]
+  },
+]
   
 
 const router = new VueRouter({
@@ -38,7 +40,7 @@ router.beforeEach((to,from,next) => {
     tag.remove();
   }
   let newTags = to.meta;
-  document.querySelector(`title`).innerText = newTags[0].title;
+  document.querySelector('title').innerText = newTags[0].title;
 
   for (let i = 1; i < newTags.length; i++) {
     document.querySelector(`head`).insertAdjacentHTML(`afterbegin`, `

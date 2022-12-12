@@ -1,43 +1,48 @@
 <template>
     <div>
-        <h2>Computer Selection</h2>
         <div class="computer">
             <button @click="randomSelection()">Go!</button>
+            <h2>Computer Selection</h2>
+            <h3>{{ picker.title }}</h3>
         </div>
+        <img :src="picker.img" />
     </div>
 </template>
 
 <script>
-import { ChildProcess } from 'child_process';
 
+// import cookies from 'vue-cookies'
 export default {
     name: "ComputerSelection",
     data() {
         return {
-            moves: [
+            compMove: [
                 {
-                    id: 1,
+
                     title: "rock",
                     img: "https://icon-library.com/images/rock-paper-scissors-icon/rock-paper-scissors-icon-16.jpg"
                 },
                 {
-                    id: 2,
+
                     title: "paper",
                     img: "https://icon-library.com/images/rock-paper-scissors-icon/rock-paper-scissors-icon-13.jpg"
                 },
                 {
-                    id: 3,
+
                     title: "scissors",
                     img: "https://icon-library.com/images/rock-paper-scissors-icon/rock-paper-scissors-icon-15.jpg"
                 },
             ],
+            picker: ""
         }
     },
     methods: {
         randomSelection() {
-            this.moves = Math.floor(Math.random() * this.moves.length);
-            this.move = moves[moves];
-            this.$emit(`selection`, this.move);
+            let picker = Math.floor(Math.random() * this.compMove.length);
+            this.picker = this.compMove[picker];
+            let selection = this.picker.title;
+            console.log(selection);
+            this.$emit(`selection`, this.picker.title)
         },
     }
 }
@@ -46,5 +51,7 @@ export default {
 </script>
 
 <style scoped>
-
+img {
+    height: 20vh;
+}
 </style>

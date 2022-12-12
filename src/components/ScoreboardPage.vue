@@ -1,8 +1,9 @@
 <template>
     <nav>
         <h2>Scoreboard!</h2>
-        <router-link to="/">Log in</router-link>
-        <router-link to="/game-page">Play Game!</router-link>
+
+        <router-link to="/">Logout</router-link>
+        <!-- <router-link to="/game-page">Play Game!</router-link> -->
     </nav>
 </template>
 

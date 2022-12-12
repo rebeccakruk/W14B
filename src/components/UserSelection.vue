@@ -1,12 +1,13 @@
 <template>
     <div>
         <div class="playerOptions">
-            <button @click="rockMove()"
-                src="https://icon-library.com/images/rock-paper-scissors-icon/rock-paper-scissors-icon-16.jpg"></button>
-            <button @click="paperMove()"
-                src="https://icon-library.com/images/rock-paper-scissors-icon/rock-paper-scissors-icon-13.jpg"></button>
-            <button @click="scissorsMove()"
-                src="https://icon-library.com/images/rock-paper-scissors-icon/rock-paper-scissors-icon-15.jpg"></button>
+            <img @click="rockMove()" class="activeChoice"
+                src="https://icon-library.com/images/rock-paper-scissors-icon/rock-paper-scissors-icon-16.jpg" />
+            <img @click="paperMove()" class="activeChoice"
+                src="https://icon-library.com/images/rock-paper-scissors-icon/rock-paper-scissors-icon-13.jpg" />
+            <img @click="scissorsMove()" class="activeChoice"
+                src="https://icon-library.com/images/rock-paper-scissors-icon/rock-paper-scissors-icon-15.jpg" />
+
         </div>
     </div>
 </template>
@@ -29,5 +30,7 @@ export default {
 </script>
 
 <style scoped>
-
+img {
+    height: 20vh;
+}
 </style>

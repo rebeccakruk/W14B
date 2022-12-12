@@ -17,11 +17,11 @@ const routes = [
       ]
           },
           {
-          path : "/Game-page",
+          path : "/Game",
           component : GamePage,
           meta:[
             {
-            title: "Game Page",
+            title: "Game",
             },
       ]
   },
